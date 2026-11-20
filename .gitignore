@@ -1,0 +1,5 @@
+# ChatGPT project reference files stay local and are never part of this repository.
+/sources/
+/AGENTS.md
+.DS_Store
+Thumbs.db
