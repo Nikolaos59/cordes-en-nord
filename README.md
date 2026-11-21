@@ -1,21 +1,30 @@
 # Cordes en Nord — V0.1
 
-Première maquette interactive de l’espace professeur, créée pour poser l’identité visuelle et tester les principaux repères de l’application.
+Application web de suivi pédagogique pour les cours de guitare. Cette première étape met en place le socle Next.js et transforme la maquette en interface à routes réelles.
 
-## Ouvrir la maquette
+## Démarrer en local
 
-Ouvrir `index.html` dans un navigateur récent. Il n’y a ni installation ni service externe requis pour faire fonctionner la maquette. Une connexion Internet permet seulement de charger les polices Manrope et DM Sans ; des polices de remplacement sont prévues.
+Prérequis : Node.js 20.9 ou plus récent.
 
-## Parcours disponibles
+```bash
+npm install
+npm run dev
+```
 
-- Vue d’ensemble : résumé de la classe, élèves à suivre et agenda du jour.
-- Mes élèves : liste des profils et progression affichée.
-- Ajouter un élève : formulaire de démonstration qui ajoute le profil à la maquette en cours.
-- Bibliothèque et Programmes : aperçus des sections prévues.
-- Mise en page adaptée aux écrans d’ordinateur et de téléphone.
+Ouvrir ensuite [http://localhost:3000](http://localhost:3000).
 
-Les profils sont des exemples fictifs. Les ajouts restent uniquement dans la mémoire de la page : ils ne sont pas sauvegardés après fermeture ou actualisation. Il n’y a pas encore de connexion, de base de données, de données réelles ni de déploiement.
+## Écrans disponibles
 
-## Suite envisagée
+- `/` : tableau de bord professeur.
+- `/eleves` : liste des élèves et ajout de profils de démonstration.
+- `/bibliotheque` et `/programmes` : pages de destination pour les prochaines étapes.
 
-Cette V0.1 sert de point de départ visuel. La suite du socle produit devra intégrer l’application TypeScript, l’authentification et les données sécurisées, puis les espaces élève et professeur. Les choix de déploiement Cloudflare et de services de données restent à confirmer au moment de la mise en place, selon les versions et compatibilités alors disponibles.
+Les profils sont fictifs et conservés en mémoire uniquement pendant la session de navigation. Aucune donnée réelle d’élève ne doit être ajoutée : la connexion, les permissions et le stockage sécurisé ne sont pas encore en place.
+
+## Structure
+
+- `src/app/` : routes Next.js App Router et styles globaux.
+- `src/components/` : navigation, tableau de bord, élèves et composants partagés.
+- `prototype/` : maquette HTML/CSS/JavaScript d’origine, conservée comme référence visuelle.
+
+Le déploiement Cloudflare, l’authentification et la base Supabase restent à configurer dans les prochaines étapes.

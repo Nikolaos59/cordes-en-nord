@@ -3,3 +3,10 @@
 /AGENTS.md
 .DS_Store
 Thumbs.db
+node_modules/
+.next/
+/out/
+/dist/
+*.tsbuildinfo
+.env*
+!.env.example
