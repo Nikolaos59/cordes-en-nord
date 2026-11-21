@@ -5,7 +5,10 @@ import { createContext, useContext, useMemo, useState, type ReactNode } from "re
 export type Student = {
   id: string;
   name: string;
-  note: string;
+  age: number;
+  level: "beginner" | "intermediate" | "advanced";
+  experienceMonths: number;
+  foundationsStatus: "not_assessed" | "in_progress" | "needs_review" | "solid";
   initials: string;
   color: string;
   progress: number;
@@ -13,19 +16,19 @@ export type Student = {
 };
 
 const sampleStudents: Student[] = [
-  { id: "lea-martin", name: "Léa Martin", note: "Débutante · Folk", initials: "LM", color: "av-coral", progress: 72, grade: "Cuivre" },
-  { id: "adam-lefebvre", name: "Adam Lefebvre", note: "Intermédiaire · Pop", initials: "AL", color: "av-blue", progress: 56, grade: "Bronze" },
-  { id: "theo-bernard", name: "Théo Bernard", note: "Débutant · Rock", initials: "TB", color: "av-yellow", progress: 38, grade: "Cuivre" },
-  { id: "ines-caron", name: "Inès Caron", note: "Intermédiaire · Folk", initials: "IC", color: "av-lilac", progress: 84, grade: "Argent" },
-  { id: "jules-moreau", name: "Jules Moreau", note: "Débutant · Pop", initials: "JM", color: "av-blue", progress: 42, grade: "Cuivre" },
-  { id: "manon-petit", name: "Manon Petit", note: "Intermédiaire · Rock", initials: "MP", color: "av-coral", progress: 68, grade: "Bronze" },
-  { id: "noe-dubois", name: "Noé Dubois", note: "Débutant · Folk", initials: "ND", color: "av-yellow", progress: 29, grade: "Cuivre" },
-  { id: "zoe-laurent", name: "Zoé Laurent", note: "Intermédiaire · Pop", initials: "ZL", color: "av-lilac", progress: 91, grade: "Argent" },
+  { id: "lea-martin", name: "Léa Martin", age: 12, level: "beginner", experienceMonths: 5, foundationsStatus: "in_progress", initials: "LM", color: "av-coral", progress: 72, grade: "Cuivre" },
+  { id: "adam-lefebvre", name: "Adam Lefebvre", age: 17, level: "intermediate", experienceMonths: 32, foundationsStatus: "solid", initials: "AL", color: "av-blue", progress: 56, grade: "Bronze" },
+  { id: "theo-bernard", name: "Théo Bernard", age: 10, level: "beginner", experienceMonths: 3, foundationsStatus: "not_assessed", initials: "TB", color: "av-yellow", progress: 38, grade: "Cuivre" },
+  { id: "ines-caron", name: "Inès Caron", age: 15, level: "intermediate", experienceMonths: 26, foundationsStatus: "in_progress", initials: "IC", color: "av-lilac", progress: 84, grade: "Argent" },
+  { id: "jules-moreau", name: "Jules Moreau", age: 13, level: "beginner", experienceMonths: 7, foundationsStatus: "needs_review", initials: "JM", color: "av-blue", progress: 42, grade: "Cuivre" },
+  { id: "manon-petit", name: "Manon Petit", age: 18, level: "intermediate", experienceMonths: 44, foundationsStatus: "solid", initials: "MP", color: "av-coral", progress: 68, grade: "Bronze" },
+  { id: "noe-dubois", name: "Noé Dubois", age: 9, level: "beginner", experienceMonths: 2, foundationsStatus: "not_assessed", initials: "ND", color: "av-yellow", progress: 29, grade: "Cuivre" },
+  { id: "zoe-laurent", name: "Zoé Laurent", age: 16, level: "intermediate", experienceMonths: 39, foundationsStatus: "in_progress", initials: "ZL", color: "av-lilac", progress: 91, grade: "Argent" },
 ];
 
 type StudentContextValue = {
   students: Student[];
-  addStudent: (name: string, level: string) => void;
+  addStudent: (student: Omit<Student, "id" | "initials" | "color" | "progress" | "grade">) => void;
 };
 
 const StudentContext = createContext<StudentContextValue | null>(null);
@@ -34,13 +37,12 @@ export function StudentProvider({ children }: { children: ReactNode }) {
   const [students, setStudents] = useState(sampleStudents);
   const value = useMemo<StudentContextValue>(() => ({
     students,
-    addStudent(name, level) {
-      const initials = name.split(/\s+/).slice(0, 2).map((part) => part[0]).join("").toLocaleUpperCase("fr-FR");
+    addStudent(student) {
+      const initials = student.name.split(/\s+/).slice(0, 2).map((part) => part[0]).join("").toLocaleUpperCase("fr-FR");
       const colors = ["av-coral", "av-blue", "av-yellow", "av-lilac"];
       setStudents((current) => [{
         id: `${Date.now()}-${current.length}`,
-        name,
-        note: `${level} · Nouveau parcours`,
+        ...student,
         initials,
         color: colors[current.length % colors.length],
         progress: 0,

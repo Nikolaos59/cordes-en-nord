@@ -29,3 +29,9 @@ Les profils sont fictifs et conservés en mémoire uniquement pendant la session
 - `prototype/` : maquette HTML/CSS/JavaScript d’origine, conservée comme référence visuelle.
 
 Le déploiement Cloudflare, l’authentification et la base Supabase restent à configurer dans les prochaines étapes.
+
+## Modèle Supabase préparé
+
+`supabase/migrations/202611210001_student_profiles.sql` prépare les profils professeurs et élèves. Chaque fiche élève distingue l’âge, le niveau musical, l’ancienneté en mois et l’état des bases. Les politiques RLS limitent la lecture et la gestion aux élèves du professeur connecté ; seuls les administrateurs créent les accès professeur.
+
+La migration n’a pas encore été appliquée à un projet Supabase. Aucun profil réel n’est inclus dans les fichiers versionnés. N’ajouter des élèves qu’une fois le projet privé, l’authentification et les contrôles d’accès opérationnels.
