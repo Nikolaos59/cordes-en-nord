@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
-import { AppShell } from "@/components/app-shell";
 import { StudentProvider } from "@/components/student-store";
 import "./globals.css";
 
@@ -22,9 +21,7 @@ export default function RootLayout({ children }: Readonly<{ children: ReactNode 
         <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
       </head>
       <body>
-        <StudentProvider>
-          <AppShell>{children}</AppShell>
-        </StudentProvider>
+        <StudentProvider>{children}</StudentProvider>
       </body>
     </html>
   );

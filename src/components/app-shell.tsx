@@ -6,7 +6,7 @@ import { useEffect, useState, type ReactNode } from "react";
 import { useStudents } from "@/components/student-store";
 
 const navigation = [
-  { href: "/", label: "Vue d’ensemble", icon: "⌂" },
+  { href: "/professeur", label: "Vue d’ensemble", icon: "⌂" },
   { href: "/eleves", label: "Mes élèves", icon: "♧" },
   { href: "/bibliotheque", label: "Bibliothèque", icon: "▤" },
   { href: "/programmes", label: "Programmes", icon: "◇" },
@@ -31,7 +31,7 @@ export function AppShell({ children }: { children: ReactNode }) {
   return (
     <div className="app-shell">
       <aside className={`sidebar${menuOpen ? " open" : ""}`} id="sidebar">
-        <Link className="brand" href="/" aria-label="Cordes en Nord, accueil" onClick={() => setMenuOpen(false)}>
+        <Link className="brand" href="/professeur" aria-label="Cordes en Nord, espace professeur" onClick={() => setMenuOpen(false)}>
           <span className="brand-mark"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M10 29.5 27.8 11.7M13 32.5 30.8 14.7M16 35.5 33.8 17.7"/><path d="M10.6 25.8 7.7 28.7a3.4 3.4 0 0 0 4.8 4.8l2.9-2.9M25.8 10.6l2.9-2.9a3.4 3.4 0 0 1 4.8 4.8l-2.9 2.9"/></svg></span>
           <span className="brand-name">cordes<span>en nord</span></span>
         </Link>

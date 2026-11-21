@@ -15,11 +15,12 @@ Ouvrir ensuite [http://localhost:3000](http://localhost:3000).
 
 ## Écrans disponibles
 
-- `/` : tableau de bord professeur.
+- `/` : page publique de présentation.
+- `/professeur` : tableau de bord professeur de démonstration.
 - `/eleves` : liste des élèves et ajout de profils de démonstration.
 - `/bibliotheque` et `/programmes` : pages de destination pour les prochaines étapes.
 
-Les profils sont fictifs et conservés en mémoire uniquement pendant la session de navigation. Aucune donnée réelle d’élève ne doit être ajoutée : la connexion, les permissions et le stockage sécurisé ne sont pas encore en place.
+Les profils sont fictifs et conservés en mémoire uniquement pendant la session de navigation. Aucune donnée réelle d’élève ne doit être ajoutée : la connexion, les permissions et le stockage sécurisé ne sont pas encore en place. L’espace professeur de démonstration n’est pas encore protégé par une connexion.
 
 ## Structure
 

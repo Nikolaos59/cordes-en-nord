@@ -1,5 +1,17 @@
-import { Dashboard } from "@/components/dashboard";
+import Link from "next/link";
 
 export default function HomePage() {
-  return <Dashboard />;
+  return <main className="landing-page">
+    <header className="landing-header">
+      <Link className="brand" href="/" aria-label="Cordes en Nord, accueil"><span className="brand-mark"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M10 29.5 27.8 11.7M13 32.5 30.8 14.7M16 35.5 33.8 17.7"/><path d="M10.6 25.8 7.7 28.7a3.4 3.4 0 0 0 4.8 4.8l2.9-2.9M25.8 10.6l2.9-2.9a3.4 3.4 0 0 1 4.8 4.8l-2.9 2.9"/></svg></span><span className="brand-name">cordes<span>en nord</span></span></Link>
+      <nav className="landing-nav" aria-label="Navigation du site"><a href="#methode">La méthode</a><a href="#cours">Les cours</a><Link className="button button-light" href="/professeur">Espace professeur <span>↗</span></Link></nav>
+    </header>
+    <section className="landing-hero">
+      <div className="landing-copy"><div className="eyebrow"><span className="live-dot"/>APPRENDRE. COMPRENDRE. JOUER.</div><h1>La guitare s’apprend<br/>un accord à la fois.</h1><p>Des cours de guitare folk et pop-rock, et un parcours pensé pour progresser avec plaisir, à son rythme.</p><div className="landing-actions"><Link className="button button-dark" href="/professeur">Découvrir l’espace professeur <span>→</span></Link><a className="landing-text-link" href="#methode">Notre approche <span>↓</span></a></div><div className="landing-note"><span className="landing-stars">✳ ✳ ✳</span><span>Pour les curieux, les débutants<br/>et ceux qui veulent aller plus loin.</span></div></div>
+      <div className="landing-art" aria-hidden="true"><div className="landing-art-backdrop"/><div className="landing-sun"/><div className="landing-sheet"><div className="sheet-head"><span>LE PETIT RYTHME</span><span>01 / 04</span></div><div className="sheet-lines"><i/><i/><i/><i/><i/><i/></div><div className="sheet-notes">♫ &nbsp; ♩ &nbsp; ♪</div><div className="sheet-chord"><span>G</span><span>C</span><span>D</span></div></div><div className="landing-guitar"><div className="landing-guitar-neck"/><div className="landing-guitar-body"><i/></div><div className="landing-guitar-strings"/></div><span className="landing-float float-note">♪</span><span className="landing-float float-spark">✳</span><div className="landing-art-caption"><span>01</span> LE PLAISIR DE JOUER</div></div>
+    </section>
+    <section className="landing-method" id="methode"><div className="section-intro"><div className="eyebrow">UNE PÉDAGOGIE QUI A DU SENS</div><h2>Comprendre, essayer,<br/>puis jouer à sa façon.</h2></div><p className="section-copy">On ne collectionne pas les exercices. On construit des repères, on écoute, on recommence — et la musique prend peu à peu sa place.</p><div className="method-cards"><article className="method-card"><span className="method-icon method-mint">01</span><h3>Un pas après l’autre</h3><p>Des objectifs accessibles et un parcours adapté au niveau de chacun.</p></article><article className="method-card"><span className="method-icon method-peach">02</span><h3>Comprendre en jouant</h3><p>Rythme, accords et morceaux se découvrent ensemble, en musique.</p></article><article className="method-card"><span className="method-icon method-lilac">03</span><h3>Voir ses progrès</h3><p>Chaque étape compte. Les réussites donnent envie de continuer.</p></article></div></section>
+    <section className="landing-cta" id="cours"><div><div className="eyebrow">CORDES EN NORD</div><h2>Une guitare, un peu de curiosité,<br/>et c’est parti.</h2></div><Link className="button button-dark" href="/professeur">Entrer dans l’espace professeur <span>→</span></Link></section>
+    <footer className="landing-footer"><span>✳ Fait avec soin, dans le Nord.</span><span>CORDES EN NORD <i>·</i> V0.1</span></footer>
+  </main>;
 }
